@@ -20,10 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Añade esto para habilitar la internacionalización
 USE_I18N = True
 USE_L10N = True
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'en'
 LANGUAGES = [
     ('en', 'English'),
     ('es', 'Español'),
+    ('ru', 'Russian'),
     # otros idiomas si es necesario
 ]
 
