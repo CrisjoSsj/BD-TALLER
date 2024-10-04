@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
 <main class ="container py-5">
     <section class="card card-body">
-        <h1 class="display-1 text-center">Django app (Gestor de tareas) by Cristopher Castro</h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, officia quas neque sit distinctio et iste quae autem voluptatibus deserunt blanditiis amet ipsa, eligendi dolorum quibusdam! Assumenda veniam officia odit.
+        <h1 class="display-1 text-center">{% trans "Django app Manager task by Cristopher Castro" %}</h1>
     <div class="text-center">
         <a class="btn btn-secondary" href="/signin/">
-            Sing in
+           {% trans "Sing in" %}
         </a>
         <a class="btn btn-dark" href="/signup/">
-            Sing up
+            {% trans "Sing up" %}
         </a>
     </div>
     </section>

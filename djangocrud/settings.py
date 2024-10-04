@@ -10,13 +10,40 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import dj_database_url
+from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Añade esto para habilitar la internacionalización
+USE_I18N = True
+USE_L10N = True
+LANGUAGE_CODE = 'es'
+LANGUAGES = [
+    ('en', 'English'),
+    ('es', 'Español'),
+    # otros idiomas si es necesario
+]
 
+
+# Directorio donde se guardarán las traducciones
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+# Asegúrate de que el LocaleMiddleware esté en el orden correcto
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # Añade esta línea aquí
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -46,17 +73,6 @@ INSTALLED_APPS = [
     'tasks'
 ]
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-]
-
 ROOT_URLCONF = 'djangocrud.urls'
 
 TEMPLATES = [
@@ -83,11 +99,11 @@ WSGI_APPLICATION = 'djangocrud.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:postgres@localhost/postgres',
+        # Feel free to alter this value to suit your needs.
+        default='postgresql://postgres:postgres@localhost:5432/mysite',
         conn_max_age=600
     )
 }
-
 
 
 # Password validation
@@ -112,13 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)

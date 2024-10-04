@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block content %}
 
 <main class="container">
@@ -7,21 +7,21 @@
         <section class="col-md-4 offset-md-4 mt-5">
             <form action="/signin/" method="POST" class="card card-body">
 
-                <h1 class="text-center">Signin</h1>
+                <h1 class="text-center">{% trans "Signin" %}</h1>
                 {{error}}
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label for = "username">Username: </label>
-                    <input type="text" name="username" class="form-control" placeholder="Write your username">
+                    <label for = "username">{% trans "Username:" %}</label>
+                    <input type="text" name="username" class="form-control">
                 </div>
 
                 <div class="mb-3">
-                    <label for="password">password: </label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Write your password">
+                    <label for="password">{% trans "password:" %}</label>
+                    <input type="password" name="password" id="password" class="form-control" >
                 </div>
 
                 <button class="btn btn-primary">
-                    Signin
+                   {% trans " Signin" %}
                 </button>
             </form>
         </section>
