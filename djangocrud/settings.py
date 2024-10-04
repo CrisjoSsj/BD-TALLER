@@ -82,12 +82,15 @@ WSGI_APPLICATION = 'djangocrud.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://postgres:postgres@localhost/postgres',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'xe',  # Nombre de tu base de datos (ajusta según sea necesario)
+        'USER': 'admin',            # El nombre de usuario asociado a la base de datos Oracle
+        'PASSWORD': '1234',     # La contraseña del usuario
+        'HOST': 'localhost',             # Host de tu base de datos
+        'PORT': '1521',                  # El puerto por defecto de Oracle
+    }
 }
-
 
 
 # Password validation
